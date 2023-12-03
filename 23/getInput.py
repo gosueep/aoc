@@ -28,4 +28,4 @@ if r.status_code == 200:
 elif r.status_code == 500:
     print('Maybe Session cookie is expired')
 elif r.status_code == 404:
-    print('Link Wrong or unavailable?')
+    print(r.text)
