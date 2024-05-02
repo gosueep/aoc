@@ -1,0 +1,29 @@
+import sys
+
+FILENAME = 'input.txt'
+if len(sys.argv) == 2 and sys.argv[1] == 'test':
+    FILENAME = 'test.txt'
+
+file = open(FILENAME, 'r')
+lines = file.readlines()
+
+instr = lines[0].strip()
+
+move = {}
+for line in lines[2:]:
+    m = line.split()
+    src = m[0]
+    l = m[2][1:-1]
+    r = m[3][:-1]
+    move[src] = (l,r)
+
+# print(move)
+
+curr = 'AAA'
+i = 0
+while curr != 'ZZZ':
+    dir = instr[i%len(instr)]
+    curr = move[curr][dir == 'R']
+    # print(dir, curr)
+    i += 1
+print(i)
